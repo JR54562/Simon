@@ -1,36 +1,95 @@
-header{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    background-color: blueviolet;
-    padding: 5px;
-    background: #bc1a6b;
-      color: white;     
+header {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 5px;
+  background: #e60877a3;
+  color: white;
+  width: 450px;
 }
 
-.console{
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    width: 400px;
-    margin: 50px auto;    
+.gameBoard {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  width: 400px;
+  margin: 50px auto;
+  background-color: black;
+  padding: 10px;
 }
 
-.piece{
-    width: 200px;
-    height: 200px;
-    box-shadow: 0 0 0 1px;
-    border: 1px solid #333;
+.panel {
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 0 0 1px;
+  border: 1px solid #333;
+  width: 200px;
+  height: 200px;
 }
-#green{
-    background-color: rgb(13, 196, 13);
+.topGreen {
+  background-color: rgb(13, 196, 13);
+  border-top-left-radius: 125px;
 }
-#red{
-    background-color: rgb(226, 33, 33);
+.topGreen:hover{
+    box-shadow: inset 0px 0px 10px white;
+    border: 15px solid white;
+    box-sizing: border-box;
 }
-#yellow{
-    background-color: rgb(255, 255, 7);
+.topRed {
+  background-color: rgb(226, 33, 33);
+  border-top-right-radius: 125px;
+    }
+.topRed:hover{
+    box-shadow: inset 0px 0px 10px white;
+    border: 15px solid white;
+    box-sizing: border-box;
 }
-#blue{
-    background-color: rgb(32, 96, 235);
+.bottomYellow {
+  background-color: rgb(255, 255, 7);
+  border-bottom-left-radius: 125px;
+  }
+.bottomYellow:hover{
+    box-shadow: inset 0px 0px 10px white;
+    border: 15px solid white;
+    box-sizing: border-box;
 }
+.bottomBlue {
+  background-color: rgb(32, 96, 235);
+  border-bottom-right-radius: 125px;
+  }
+.bottomBlue:hover{
+    box-shadow: inset 0px 0px 10px white;
+    border: 15px solid white;
+    box-sizing: border-box;
+}
+.reset {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+#round{
+    padding: 10px;
+  margin-left: 20px;
+  border: 1px solid #333;
+  border-radius: 25px;
+}
+#startGame{
+    min-width: 130px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    border: 2px solid #adb5bd;
+    background: #adb5bd;
+  }
+  #startGame:hover{
+    background: #fff;
+    color: #adb5bd
+  }

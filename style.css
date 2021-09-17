@@ -23,49 +23,32 @@ header {
   height: 200px;
   box-shadow: 0 0 0 1px;
   border: 1px solid #333;
-  width: 200px;
-  height: 200px;
   cursor: pointer;
 }
-.active{
+.panel:hover{
+    box-shadow: inset 0px 0px 10px white;
+    border: 15px solid white;
+    box-sizing: border-box;
+}
+.panel:active {
     background-color: white;
 }
 .topGreen {
   background-color: rgb(13, 196, 13);
   border-top-left-radius: 125px;
 }
-.topGreen:hover{
-    box-shadow: inset 0px 0px 10px white;
-    border: 15px solid white;
-    box-sizing: border-box;
-}
 .topRed {
   background-color: rgb(226, 33, 33);
   border-top-right-radius: 125px;
     }
-.topRed:hover{
-    box-shadow: inset 0px 0px 10px white;
-    border: 15px solid white;
-    box-sizing: border-box;
-}
 .bottomYellow {
   background-color: rgb(255, 255, 7);
   border-bottom-left-radius: 125px;
   }
-.bottomYellow:hover{
-    box-shadow: inset 0px 0px 10px white;
-    border: 15px solid white;
-    box-sizing: border-box;
-}
 .bottomBlue {
   background-color: rgb(32, 96, 235);
   border-bottom-right-radius: 125px;
   }
-.bottomBlue:hover{
-    box-shadow: inset 0px 0px 10px white;
-    border: 15px solid white;
-    box-sizing: border-box;
-}
 .reset {
   display: flex;
   justify-content: center;

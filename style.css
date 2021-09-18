@@ -33,19 +33,22 @@ header {
 .panel:active {
     background-color: white;
 }
-.topGreen {
+.selected{
+    background-color: white;
+}
+#green {
   background-color: rgb(13, 196, 13);
   border-top-left-radius: 125px;
 }
-.topRed {
+#red {
   background-color: rgb(226, 33, 33);
   border-top-right-radius: 125px;
     }
-.bottomYellow {
+#yellow {
   background-color: rgb(255, 255, 7);
   border-bottom-left-radius: 125px;
   }
-.bottomBlue {
+#blue {
   background-color: rgb(32, 96, 235);
   border-bottom-right-radius: 125px;
   }

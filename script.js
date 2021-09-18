@@ -16,24 +16,47 @@ function addCompColor() {
   let x = Math.floor(Math.random() * 4);
   compArray.push(x);
 }
-addCompColor();
-//console.log(compArray)
+
+// ~Change rounds~
+function rndChange() {
+    addCompColor();
+}
+// ~End Change rounds~
+console.log(compArray)
+
+
+function flash() {
+    // for each index in compArray, show the value of colorArray
+    // - store the current background style into var
+    // - change backgroundColor to "white" for 1 sec timer
+    // change back to variable store value
+}
 
   // start the round and show the first sequence
 function gameTurn() {
-    // game will show a sequence to use to repeat
+    // game will show a sequence (value of compArray in colorsArray) For loop
+    // func Flash() will be called for each panel in compArray    
 }
 
-// adding event listeners for "panel" click
+function plyrTurn() {
+    // adding event listeners for "panel" click
+    panels.forEach((panel) => {
+        panel.addEventListener("click", panelClick);
+    });
+    // Add click functionality to every 'panel'
+const panelClick = (event) => {    
+    // Store value of index of panel selected in plyrArray
+    // compare plyrArray to compArray; if true - rndChange()
+    // Else alert to failure
+};
+    
+}
 
-panels.forEach((panel) => {
-  panel.addEventListener("click", panelClick);
-});
+  
+
 
 // let counter = 1
 
-const panelClick = (event) => {
-  // Add click functionality to every 'panel'
-};
 
-var div = document.getElementsById("panel");
+
+

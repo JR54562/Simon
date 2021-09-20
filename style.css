@@ -39,7 +39,7 @@ header {
 .hidden {
     display: none !important;
   }
-  
+
 .flash{
     -webkit-animation-name: flash-animation;
     -webkit-animation-duration: 1s;
@@ -104,3 +104,6 @@ header {
     background: #fff;
     color: #adb5bd
   }
+  .white_flash{
+    background-color: white;
+}

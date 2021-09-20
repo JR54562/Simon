@@ -9,49 +9,53 @@ const sequence = [green, red, yellow, blue];
 
 const colors = ["green", "red", "yellow", "blue"];
 let userArray = [];
-let compArray = [0,2,3,1];
+let compArray = [];
 let level = 1;
+let counter = 0;
 
 resetGame.addEventListener("click", function(){
-    round.innerText = level;
+    round.innerText = "Round " + level;
+    resetGame.innerText= "Restart?"
 });
 
 // Game start
-function startGame() {
-//  resetGame.classList.add("hidden");
-}
+alert("Ready to follow Simon?")
 // ~Change rounds~
 function rndChange() {
+    counter++
     addCompColor();
+    flash(); // call function to show sequence compiled  to player
 } // ~This adds new color added to compArray~
-
+rndChange();
 console.log(colors[1]);
 
 // have Simon start building array to be played
 function addCompColor() {
     let x = Math.floor(Math.random() * 4);
     compArray.push(x);
-}  // compArray now holds a new value
+}  // compArray now holds a new string value between 0-3 and grows
 
 
 // for each index in compArray, flash the same index in 'sequence'
   // - change backgroundColor to "white" for 1 sec timer (add class)
   // change back to default value (remove class)
 
-
+flash()
 function flash() {
     for (let i = 0; i < compArray.length; i++){
         console.log(compArray[i]);
-        let x = i;
-        console.log(x)
-        sequence[x].classList.add("flash");;
-        setTimeout(function () {            
-            console.log(compArray[i]);
-            console.log(sequence[x]);
-            sequence[x].classList.remove("flash");
-               }, 1000);
+  //      sequence[i].classList.add("flash");;
+  setTimeout(function () { 
+      sequence[compArray[i]].style.backgroundColor="white";
+      console.log("adding flash")
+       }, 1000 * (i+1) );
+        setTimeout(function () {
+            console.log("removing flash")
+            sequence[compArray[i]].style.backgroundColor=colors[compArray[i]]
+            
+        }, 1100 *(i+1));
     };
-    flash(sequence[x]); 
+    
 };
 
 //flash()
@@ -69,8 +73,10 @@ function plyrTurn() {
 panels[i].addEventListener("click", panelClick);
     }
     function panelClick(i) {
-        userArray.push[i]
-    }      
+        userArray.push[i]        
+    }
+    // need to check if correct by comparing
+    //If userArray === compArray then next round - rndChange()
 };
   
 plyrTurn()

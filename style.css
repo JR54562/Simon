@@ -36,6 +36,27 @@ header {
 .selected{
     background-color: white;
 }
+.hidden {
+    display: none !important;
+  }
+  
+.flash{
+    -webkit-animation-name: flash-animation;
+    -webkit-animation-duration: 1s;
+
+    animation-name: flash-animation;
+    animation-duration: 1s;
+}
+@-webkit-keyframes flash-animation {  
+    from { background: white; }
+    to   { background: default; }
+}
+@keyframes flash-animation {  
+    from { background: white; }
+    to   { background: default; }
+}
+
+
 #green {
   background-color: rgb(13, 196, 13);
   border-top-left-radius: 125px;

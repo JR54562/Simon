@@ -11,11 +11,13 @@ const colors = ["rgb(13, 196, 13)", "red", "yellow", "blue"];
 let userArray = [];
 let compArray = [];
 let level = 1;
-let counter = 0;
+let z;
 
 resetGame.addEventListener("click", function () {
   round.innerText = "Round " + level;
-  resetGame.innerText = "Restart?";
+    resetGame.innerText = "Restart?";
+    z = 0;
+    rndChange()
 });
 
 // Game start
@@ -23,17 +25,18 @@ alert("Ready to follow Simon?");
 // have Simon start building array to be played
 function addCompColor() {
   let x = Math.floor(Math.random() * 4);
-  compArray.push(x);
+    compArray.push(x);
+    // console.log(`add comp ${compArray}`)
 } // compArray now holds a new string value between 0-3 and grows
 
 // ~Change rounds~
 function rndChange() {
   round.innerText = "Round " + level;
-  counter++;
+  level++;
   addCompColor();
   flash(); // call function to show sequence compiled  to player
 } // ~This adds new color added to compArray~
-rndChange();
+//rndChange();
 // console.log(colors[1]);
 
 // for each index in compArray, flash the same index in 'sequence'
@@ -62,30 +65,40 @@ function plyrTurn() {
     // adding event listeners for "panel" click
     for (let i = 0; i < sequence.length; i++) {
         sequence[i].addEventListener("click", panelClick);
-        console.log(`for loop ${sequence[i]}`);
-    }
-
-    function panelClick(i) {
-        console.log("panel click works")
-        console.log(i);
-        userArray.push[i];
-        console.log(userArray);
+        // console.log(`for loop ${sequence[i]}`);
     }
 }
-    // need to check if correct by comparing
-    //If userArray === compArray then next round - rndChange()
-    // for (var i = 0; i < compArray.length; i++) {
-    //     if (userArray == compArray); {
-    //         rndChange();
-    //     }
-    // }
+    function panelClick(e) {
+        // console.log("panel click works")
+        // console.log(e) //pointer event captured
+        // console.log(e.target.attributes.name.value);
+        let y = e.target.attributes.name.value;
+        // console.log(y);
+        userArray.push(parseInt(y));
+        // console.log(y);
+        // console.log(userArray);
+        // console.log(compArray);
+        if (userArray.length === compArray.length) {
+            checker();
+       }        
+    }
+function checker() {
+    for (i = 0; i < compArray.length; i++) {    
+        if (userArray[i] != compArray[i]) {
+            z = 1;
+            alert("You have failed this round. Try again?");
+            userArray = []
+            compArray = []
+            level = 1;
+            resetGame.innerText = "Restart?"
+            }
+    }
+    console.log(z)
+    if (z === 0) {
+        userArray = []
+        rndChange();
+        // console.log("I ran the round changer")
+    }
+}
 
-console.log(userArray);
 
-// Add click functionality to every 'panel'
-//   const panelClick = (event) => {
-// Store value of index of panel selected in userArray
-// compare userArray to compArray; if true - rndChange()
-// Else alert to failure
-
-// let counter = 1;

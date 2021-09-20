@@ -40,7 +40,7 @@ header {
     display: none !important;
   }
 
-.flash{
+/* .flash{
     -webkit-animation-name: flash-animation;
     -webkit-animation-duration: 1s;
 
@@ -54,7 +54,7 @@ header {
 @keyframes flash-animation {  
     from { background: white; }
     to   { background: default; }
-}
+} */
 
 
 #green {

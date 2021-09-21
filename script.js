@@ -13,36 +13,37 @@ let compArray = [];
 let level = 1;
 let z;
 
-resetGame.addEventListener("click", function () {
-  round.innerText = "Round " + level;
-    resetGame.innerText = "Restart?";
-    z = 0;
-    rndChange()
-});
-
 // Game start
 alert("Ready to follow Simon?");
+
+// Populate the Start button and click event
+resetGame.addEventListener("click", function () {
+  round.innerText = "Round " + level;
+  resetGame.innerText = "Restart?";
+  z = 0;
+  rndChange();
+});
+
 // have Simon start building array to be played
 function addCompColor() {
   let x = Math.floor(Math.random() * 4);
-    compArray.push(x);
-    // console.log(`add comp ${compArray}`)
-} // compArray now holds a new string value between 0-3 and grows
+  compArray.push(x); 
+}
+// compArray now holds a new string value between 0-3 and grows
 
 // ~Change rounds~
+// This is the gameplay mechanics. Calls for the new sequence to be shown.
 function rndChange() {
   round.innerText = "Round " + level;
-  level++;
-  addCompColor();
+  level++; //increase the level
+  addCompColor(); // ~This adds new color added to compArray~
   flash(); // call function to show sequence compiled  to player
-} // ~This adds new color added to compArray~
-//rndChange();
-// console.log(colors[1]);
+} 
+
 
 // for each index in compArray, flash the same index in 'sequence'
-// - change backgroundColor to "white" for 1 sec timer (add class)
+// - change backgroundColor to "white" for 1 sec timer
 // change back to default value (remove class)
-
 flash();
 function flash() {
   for (let i = 0; i < compArray.length; i++) {
@@ -58,47 +59,39 @@ function flash() {
     }, 1100 * (i + 1));
   }
 }
-
+// Call for the player turn to start
 plyrTurn();
 
 function plyrTurn() {
-    // adding event listeners for "panel" click
-    for (let i = 0; i < sequence.length; i++) {
-        sequence[i].addEventListener("click", panelClick);
-        // console.log(`for loop ${sequence[i]}`);
-    }
+  // adding event listeners for "panel" click
+  for (let i = 0; i < sequence.length; i++) {
+    sequence[i].addEventListener("click", panelClick);
+  }
 }
-    function panelClick(e) {
-        // console.log("panel click works")
-        // console.log(e) //pointer event captured
-        // console.log(e.target.attributes.name.value);
-        let y = e.target.attributes.name.value;
-        // console.log(y);
-        userArray.push(parseInt(y));
-        // console.log(y);
-        // console.log(userArray);
-        // console.log(compArray);
-        if (userArray.length === compArray.length) {
-            checker();
-       }        
-    }
+// each panel that gets selected is added to the player array.
+function panelClick(e) {
+  let y = e.target.attributes.name.value;
+  userArray.push(parseInt(y));
+    if (userArray.length === compArray.length) {
+    checker();
+  }
+}
+// The checker function looks to compare the two arrays for length first and then values.
+// If they don't match, the game ends and a restart is available. 
 function checker() {
-    for (i = 0; i < compArray.length; i++) {    
-        if (userArray[i] != compArray[i]) {
-            z = 1;
-            alert("You have failed this round. Try again?");
-            userArray = []
-            compArray = []
-            level = 1;
-            resetGame.innerText = "Restart?"
-            }
+  for (i = 0; i < compArray.length; i++) {
+    if (userArray[i] != compArray[i]) {
+      z = 1;
+      alert("You have failed this round. Try again?");
+      userArray = [];
+      compArray = [];
+      level = 1;
+      resetGame.innerText = "Restart?";
     }
-    console.log(z)
-    if (z === 0) {
-        userArray = []
-        rndChange();
-        // console.log("I ran the round changer")
-    }
+  }
+   if (z === 0) {
+    userArray = [];
+    rndChange();
+    // run the round changer
+  }
 }
-
-

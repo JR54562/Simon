@@ -2,6 +2,8 @@
 -Description-
 Simon is a simple game of following the presented patterns. 
 
+![Alt text](/Simon_ss.png?raw=true "Simon Game Screenshot")
+
 
 -Brief example-
 
@@ -13,24 +15,85 @@ When Simon launches, it shows a board with 4 colors showing.
 
 - The next round will add another color to the sequence.
 
-
-List of Features -
-
-- An HTML page with a table of 4 cells
-- Just enough CSS to make the cells visible.
-- Shows you a pattern and changes the background color of a cell when you click on it.
-- Game tells you if you pass or fail. 
-- Start/Restart button
-
-List of Technologies Used -
-
-- This app was created with HTML, CSS, and Vanilla JS.
-
 Getting Started -
 
 - Press Start button to begin a new round.
 - Click the corresponding "flashed" panel to proceed.
 - If you fail, press Restart to try another time. 
+
+Approach:
+
+- I built an HTML page with a table of 4 cells
+- Styling to make the cells visible.
+- Game shows you a pattern by changing the background color of a cell.
+```
+// for each index in compArray, flash the same index in 'sequence'
+// - change backgroundColor to "white" for 1 sec timer
+// change back to default value
+flash();
+function flash() {
+  for (let i = 0; i < compArray.length; i++) {
+    setTimeout(function () {
+      sequence[compArray[i]].style.backgroundColor = "white";
+    }, 1000 * (i + 1));
+    setTimeout(function () {
+      sequence[compArray[i]].style.backgroundColor = colors[compArray[i]];
+    }, 1100 * (i + 1));
+  }
+}
+```
+- Once the array has been shown to the user, player gets to make choice of panels in the correct order. 
+```
+// each panel that gets selected is added to the player array.
+function panelClick(e) {
+  let y = e.target.attributes.name.value;
+  userArray.push(parseInt(y));
+  if (userArray.length === compArray.length) {
+    checker();
+  }
+}
+```
+
+- Game then tells you if you pass or fail. Continue or restart. 
+```
+// The checker function looks to compare the two arrays for length first and then values.
+// If they don't match, the game ends and a restart is available.
+function checker() {
+  for (i = 0; i < compArray.length; i++) {
+    if (userArray[i] != compArray[i]) {
+      z = 1;
+      alert("You have failed this round. Try again?");
+      userArray = [];
+      compArray = [];
+      level = 1;
+      resetGame.innerText = "Restart?";
+    }
+  }
+  if (z === 0) {
+    userArray = [];
+    rndChange();
+    // run the round changer
+  }
+}
+```
+- Start/Restart button. All rounds are started with the following code:
+```
+// ~Change rounds~
+// This is the gameplay mechanics. Calls for the new sequence to be shown.
+function rndChange() {
+  round.innerText = "Round " + level;
+  level++; //increase the level
+  addCompColor(); // ~This adds new color added to compArray~
+  flash(); // call function to show sequence compiled  to player
+}
+```
+
+
+List of Technologies Used -
+
+- This app was created with HTML, CSS, and Vanilla JS.
+
+
 
 Acknowledgements -
 

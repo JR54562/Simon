@@ -27,7 +27,7 @@ resetGame.addEventListener("click", function () {
 // have Simon start building array to be played
 function addCompColor() {
   let x = Math.floor(Math.random() * 4);
-  compArray.push(x); 
+  compArray.push(x);
 }
 // compArray now holds a new string value between 0-3 and grows
 
@@ -38,23 +38,18 @@ function rndChange() {
   level++; //increase the level
   addCompColor(); // ~This adds new color added to compArray~
   flash(); // call function to show sequence compiled  to player
-} 
-
+}
 
 // for each index in compArray, flash the same index in 'sequence'
 // - change backgroundColor to "white" for 1 sec timer
-// change back to default value (remove class)
+// change back to default value
 flash();
 function flash() {
   for (let i = 0; i < compArray.length; i++) {
-    // console.log(compArray[i]);
-    //      sequence[i].classList.add("flash");;
     setTimeout(function () {
       sequence[compArray[i]].style.backgroundColor = "white";
-      //   console.log("adding flash")
     }, 1000 * (i + 1));
     setTimeout(function () {
-      // console.log("removing flash")
       sequence[compArray[i]].style.backgroundColor = colors[compArray[i]];
     }, 1100 * (i + 1));
   }
@@ -72,12 +67,12 @@ function plyrTurn() {
 function panelClick(e) {
   let y = e.target.attributes.name.value;
   userArray.push(parseInt(y));
-    if (userArray.length === compArray.length) {
+  if (userArray.length === compArray.length) {
     checker();
   }
 }
 // The checker function looks to compare the two arrays for length first and then values.
-// If they don't match, the game ends and a restart is available. 
+// If they don't match, the game ends and a restart is available.
 function checker() {
   for (i = 0; i < compArray.length; i++) {
     if (userArray[i] != compArray[i]) {
@@ -89,7 +84,7 @@ function checker() {
       resetGame.innerText = "Restart?";
     }
   }
-   if (z === 0) {
+  if (z === 0) {
     userArray = [];
     rndChange();
     // run the round changer
